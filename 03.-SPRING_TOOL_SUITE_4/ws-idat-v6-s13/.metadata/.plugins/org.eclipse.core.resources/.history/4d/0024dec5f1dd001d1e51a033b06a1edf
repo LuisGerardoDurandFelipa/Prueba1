@@ -1,0 +1,49 @@
+package pe.company.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import pe.comany.model.Producto;
+
+//3.PARA LA CONVERSION A UN SERVICIO SE NECESITA LAS SEGUIENTES ANOTACIONES FRAMEWORK SPRING
+@RestController // LE INDICAMOS QUE SEA UN RESTFULL
+@RequestMapping(value="v1") //LE INDICAMOS EL NOMBRE CON EL CUAL SERA LLAMADO DESDE LA URL
+
+public class ProductoController {
+	
+	//1.- DEFINIMOS CON EL FRAMEWORK NUESTROS METODOS QUE VAMOS A ENVIAR
+	// O MENTODOS PARA USAR 
+	
+	//2.- METODO LISTAR TODOS LOS DATOS 
+	//***3.1.-LE INDACAMOE LA ANOTACION SPRIGN***************
+	//este servicio respondera al metodo GET con el nombre de /productos y tendra un contenido de tipo json
+	//este ultimo atributo es para que convierta nuestro return en formato json
+	@RequestMapping(value="/productos",method = RequestMethod.GET,headers = "Accept=application/json")
+	//***************************************************
+	//@ResponseBody INDICA QUE TRANSFORME EL RESULTADO DEL FINDALL Y LO ENVIE A LA PERSONA QUE INVOCADO 
+	//NUESTRO SERVICIO 
+	public @ResponseBody List<Producto>findAll(){
+		//2.1 CREAMOS UN OBJETO DEL TIPO ARRAY LIST
+		List<Producto> listaProducto = new ArrayList<>();
+		
+		//2.2 INGRESAMO DATOS INGRESADOS DIRRECTAMENTE
+		Producto producto1=new Producto(1L,"Caramelos","Bolsa",5.00,100);
+	    Producto producto2=new Producto(2L,"Chocolates","Caja",8.00,50);
+	    Producto producto3=new Producto(3L,"Galletas","Bolsa",10.00,70);
+	    
+	    //2.3 AGREGAMOS LOS DATOS A LA LISTA listaProducto
+	    listaProducto.add(producto1);
+	    listaProducto.add(producto2);
+	    listaProducto.add(producto3);
+	    
+	    //2.3 RETORNAMOS EL RESULTADO 
+		return listaProducto;
+	}
+	
+}

@@ -1,0 +1,21 @@
+package pe.company.app;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.PropertySource;
+
+//1.- HACEMOS UN SCAN A LOS PAQUETES CREADOS
+@SpringBootApplication(scanBasePackages = {"pe.company.controller"}) 
+
+//2.- PARA EXPONGA NUESTROS SERVICIOS DEBEMOS INDICARLE QUE HAGA UNA CONFIGURACION 
+//LA CONFIGURACION ES PARA QUE LEA NUESTRO ARCHIVO DONDE ENCONTRARA LA CONFIGURACION 
+//DE NUESTRA APLIACION 
+@PropertySource("classpath:application.properties")//INDICA EL NOMBRE DEL PROYECTO PARA NUESTRA URL
+
+public class SpringIdatV6S132Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringIdatV6S132Application.class, args);
+	}
+
+}

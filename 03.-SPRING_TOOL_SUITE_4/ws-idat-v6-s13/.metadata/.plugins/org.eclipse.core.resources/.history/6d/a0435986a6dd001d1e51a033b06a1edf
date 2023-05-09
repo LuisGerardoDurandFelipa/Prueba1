@@ -1,0 +1,5 @@
+package pe.company.controller;
+
+public class ProductoController {
+
+}

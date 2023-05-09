@@ -1,0 +1,15 @@
+package pe.company.app;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.PropertySource;
+
+@SpringBootApplication(scanBasePackages = {"pe.company.controller","pe.company.service","pe.company.repository","pe.company.model"})
+@PropertySource ("classpath:application.properties")
+public class SpringIdatV6S13Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringIdatV6S13Application.class, args);
+	}
+
+}

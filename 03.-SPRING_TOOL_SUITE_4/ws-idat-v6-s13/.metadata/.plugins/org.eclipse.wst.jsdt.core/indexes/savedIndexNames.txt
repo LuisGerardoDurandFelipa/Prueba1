@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\Users\GERARDO\Documents\01.-PROYECTOS_DE_PROGRAMACION\03.-SPRING_TOOL_SUITE_4\ws-idat-v6-s13\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1300671470.index
+4218435594.index
+4110517079.index
+685633556.index
+1317450186.index
+1420949727.index
+28599967.index

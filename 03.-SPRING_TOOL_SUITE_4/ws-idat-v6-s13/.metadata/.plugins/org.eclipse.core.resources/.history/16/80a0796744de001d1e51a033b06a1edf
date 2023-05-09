@@ -1,0 +1,44 @@
+package pe.company.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import pe.company.model.Categoria;
+
+// USAMOS ESTA INTERFACES PARA EMPLEAR LAS FUNCIONES BASICAS DE FRAMEWORK SPRING
+//1.- HERAMOS DE OTRO INTERFACE LLAMADO CRUDREPOSITORY (REQUIERE UNA CLASE ,
+// REQUIERE EL TIPO DE DATO DEL ID DEL LA CLASE )
+
+//5.-LE INDICAMOS A SPTRING QUE ESTA ES UNA CAPA DE DDATO
+@Repository
+
+public interface CategoryRepository extends CrudRepository<Categoria, Long>{
+
+	//2.- IMPLEMENTAMOS EL METODO LIST DE CATEGORIAS
+	//3.- INDICAMOS EL NOMBRE CON EL CUAL NOS VAMOS A REFERIR PARA LLAMAR 
+	//     A *ESTE* METODO, TENER PRESENTE QUE ESTA CONSULTA NO SERA EN SQL 
+	// SINO EN EL LENGUAJE JQL DE JPA , EN ESE CASO TODOS SON OBEJTOS
+	@Query("select c from Categoria c where c.descripcion like %:descripcion%")
+	// select * from Categoria where descripcion like %?%
+	
+	//4.-INDICAMOS EN EL METODO QUE TENDRA UN PARAM EL CUAL PERMITE
+	// RECIBIR UN PARAMETRO DESDE LA URL QUE SE ALMACENARA EN LA VARIABLES STRING
+	List<Categoria>findByDescription (@Param("descripcion") String descripcion);
+	
+	/**
+	 * BUSCAR POR ID EN LA CLASE CATEGORIA
+	 * **/
+	@Query("select c from Categoria c where c.id_categoria= :id_categoria")
+	Categoria buscarPorId(@Param("id_categoria") Long id_categoria );
+	
+	/**
+	 * INSERTAR  EN LA CLASE CATEGORIA
+	 * **/
+	//@Query("insert into Categoria c (c.description ) value (:description)")
+	//Categoria insertarCategoria(@Param("description") String description);
+	
+}

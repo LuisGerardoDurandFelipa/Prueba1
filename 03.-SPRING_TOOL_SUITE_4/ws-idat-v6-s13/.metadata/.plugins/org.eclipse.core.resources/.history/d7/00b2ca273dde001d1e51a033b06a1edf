@@ -1,0 +1,27 @@
+package pe.company.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import pe.company.model.Categoria;
+import pe.company.repository.CategoryRepository;
+
+//1.-INDICAMOS A SPRING QUE ESTA CLASE CORRESPONDE A LA CAPA DE SERVICIO
+@Service
+
+public class CategoryService {
+	
+	//2.-USAREMOS NUESTRO REPOSITO QUE HEMOS CREADO (CategoryRepository)
+	@Autowired // INDICAMOS QUE ESTE REPOSITORY LO TOME DE SU CONTEXTOS
+	private CategoryRepository categoryRepository;
+	
+	//3.-CREAMOS UN METODO PUBLICO QUE NOS DEVUELVE UNA LISTA DE CLASE CATEGORIA
+	public List<Categoria> findByDescription(String descripcion){
+		
+		//4.-LLAMAMOS AL MEMTODO QUE SE CREO EN EL REPOSITORY Y LO RETORNAMOS
+		return categoryRepository.findByDescription(descripcion);
+		
+	}
+}
